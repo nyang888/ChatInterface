@@ -14,14 +14,16 @@ import android.widget.RelativeLayout;
 public class TouchHandler implements OnTouchListener {
 	private float mActionBarHeight;
 	private Button mButton;
-	private View frameView;
+	private View mFrameView;
+	private View mMainActivityView;
 
 	public TouchHandler(Button _button, MainActivity _activity) {
 		// Here we get the height of the action bar and the button to calculate
 		// a proper offset.
 		mActionBarHeight = _activity.getActionBarHeight();
 		mButton = _button;
-		frameView = (View) _activity.findViewById(R.id.fragment_container);
+		mFrameView = (View) _activity.findViewById(R.id.fragment_container);
+		mMainActivityView = (View) _activity.findViewById(R.id.container);
 	}
 
 	@Override
@@ -42,20 +44,17 @@ public class TouchHandler implements OnTouchListener {
 			// height. it takes 2 of button heights to be able to get the button
 			// to always be above the finger.
 			if ((currentY - mActionBarHeight - (2 * mButton.getHeight())) > 0) {
-				/*
-				 * RelativeLayout.MarginLayoutParams marginLayoutParams = new
-				 * RelativeLayout.MarginLayoutParams( view.getLayoutParams());
-				 * marginLayoutParams.setMargins(0, (int) (currentY -
-				 * mActionBarHeight - (2 * mButton.getHeight())), 0, 0);
-				 * RelativeLayout.LayoutParams layoutParams = new
-				 * RelativeLayout.LayoutParams( marginLayoutParams);
-				 * view.setLayoutParams(layoutParams);
-				 */
-				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-						frameView.getLayoutParams());
-				params.height = (int) (currentY - mActionBarHeight - (2 * mButton
-						.getHeight()));
-				frameView.setLayoutParams(params);
+				if ((mMainActivityView.getHeight() - currentY + mActionBarHeight) >= 0) {
+					// Here we adjust the height of the chat. However, we must
+					// makes sure that the chat does not hit negative values
+					// because negative values will make chat full screen.
+					RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+							mFrameView.getLayoutParams());
+					params.height = (int) (mMainActivityView.getHeight()
+							- currentY + mActionBarHeight);
+					params.addRule(RelativeLayout.ABOVE, R.id.input_message);
+					mFrameView.setLayoutParams(params);
+				}
 			}
 			break;
 		}

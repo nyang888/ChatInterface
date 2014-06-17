@@ -36,11 +36,11 @@ public class ChatFragment extends Fragment {
 
 		// Assign test colors to the array to test whether background colors are
 		// working properly.
-		mColorList[0] = 0x77700101;
-		mColorList[1] = 0x77704F01;
-		mColorList[2] = 0x775A7001;
-		mColorList[3] = 0x7701705E;
-		mColorList[4] = 0x77470170;
+		mColorList[0] = 0xff700101;
+		mColorList[1] = 0xff704F01;
+		mColorList[2] = 0xff5A7001;
+		mColorList[3] = 0xff01705E;
+		mColorList[4] = 0xff470170;
 
 		try {
 			// Read the sample JSON file and place the information into chatList
@@ -93,7 +93,7 @@ public class ChatFragment extends Fragment {
 
 			if (tempText.getUserId() == 0) {
 				// System messages are always gray colored.
-				tempText.setColor(0x00ffffff);
+				tempText.setColor(0xff000000);
 			} else {
 				for (int i = 0; i <= mUserIdList.size(); i++) {
 					if (i == mUserIdList.size()) {
