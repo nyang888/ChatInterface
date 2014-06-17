@@ -104,8 +104,7 @@ public class ChatFragment extends Fragment {
 						tempText.setColor(mColorList[i % 5]);
 
 						break;
-					} else if (mUserIdList.get(i).intValue() == mChatList.get(
-							mChatList.size() - 1).getUserId()) {
+					} else if (mUserIdList.get(i).intValue() == tempText.getUserId()) {
 						// If the user is already assigned a color, just add
 						// the new chatBlock with the color assigned.
 
