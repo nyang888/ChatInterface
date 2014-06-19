@@ -6,10 +6,14 @@
  */
 package com.chatinterface;
 
+import java.io.InputStream;
 import java.util.Date;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.app.Activity;
 
 public abstract class ChatBlock {
 	private int mChatId;
@@ -87,5 +91,24 @@ public abstract class ChatBlock {
 			System.err.println("Caught JSONException: " + e.getMessage());
 		}
 
+	}
+	
+	public static JSONArray readJsonFile(Activity _activity, String assetUrl) {
+		JSONArray mTestMessages = new JSONArray();
+		String mJsonString;
+		try {
+			InputStream is = _activity.getAssets().open(assetUrl);
+			int size = is.available();
+			byte[] buffer = new byte[size];
+			is.read(buffer);
+			is.close();
+			mJsonString = new String(buffer, "UTF-8");
+
+			mTestMessages = new JSONArray(mJsonString);
+		} catch (Exception e) {
+			System.err.println("Caught Exception: " + e.getMessage());
+		}
+
+		return mTestMessages;
 	}
 }

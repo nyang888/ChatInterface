@@ -21,7 +21,7 @@ public class ChatAdapter extends ArrayAdapter<ChatBlock> {
 
 	// Here is the constructor.
 	public ChatAdapter(Context _context, ArrayList<ChatBlock> _chatBlocks) {
-		super(_context, R.layout.chat_block, _chatBlocks);
+		super(_context, R.layout.chat_block_layout, _chatBlocks);
 		mContext = _context;
 		mChatBlocks = _chatBlocks;
 	}
@@ -35,7 +35,7 @@ public class ChatAdapter extends ArrayAdapter<ChatBlock> {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		// Use the inflater to store the layout of the chat_blocks.
-		View mChatView = mInflater.inflate(R.layout.chat_block, parent, false);
+		View mChatView = mInflater.inflate(R.layout.chat_block_layout, parent, false);
 
 		// Here we instantiate the variables and assign them to each part of the
 		// RelativeLayout

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.TypedValue;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends ActionBarActivity {
 	@Override
@@ -24,11 +25,13 @@ public class MainActivity extends ActionBarActivity {
 
 		// Prepare for the button sliding with the TouchHandler.
 		Button chatSlider = (Button) findViewById(R.id.slider);
-		TouchHandler touch = new TouchHandler(chatSlider, this);
-
-		// Set the button with the TouchHandler to slide.
+		TouchHandler touch = new TouchHandler(this);
 		chatSlider.setOnTouchListener(touch);
 
+		// Set a focus listener for editText
+		EditText inputMessage = (EditText) findViewById(R.id.input_message);
+		EditTextClickHandler onClickListener = new EditTextClickHandler(this);
+		inputMessage.setOnClickListener(onClickListener);
 	}
 
 	public float getActionBarHeight() { // Return the height of the action bar

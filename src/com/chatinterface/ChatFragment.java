@@ -4,7 +4,6 @@
  */
 package com.chatinterface;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -36,16 +35,16 @@ public class ChatFragment extends Fragment {
 
 		// Assign test colors to the array to test whether background colors are
 		// working properly.
-		mColorList[0] = 0xff700101;
-		mColorList[1] = 0xff704F01;
-		mColorList[2] = 0xff5A7001;
-		mColorList[3] = 0xff01705E;
-		mColorList[4] = 0xff470170;
+		mColorList[0] = 0x66700101;
+		mColorList[1] = 0x66704F01;
+		mColorList[2] = 0x665A7001;
+		mColorList[3] = 0x6601705E;
+		mColorList[4] = 0x66470170;
 
 		try {
 			// Read the sample JSON file and place the information into chatList
 			// as chatBlocks.
-			JSONArray mTest = readTestJson();
+			JSONArray mTest = ChatBlock.readJsonFile(getActivity(), "examplechat.json");
 
 			for (int index = 0; index < mTest.length(); index++) {
 				addJson(mTest.getJSONObject(index));
@@ -60,27 +59,7 @@ public class ChatFragment extends Fragment {
 		mListView.setAdapter(mAdapter);
 	}
 
-	// TODO: Replace readTestJson() when you get a better understanding on how
-	// JSON will be given readTestJSON will read the sample JSON file to test
-	// the program.
-	private JSONArray readTestJson() {
-		JSONArray mTestMessages = new JSONArray();
-		String mJsonString;
-		try {
-			InputStream is = getActivity().getAssets().open("examplechat.json");
-			int size = is.available();
-			byte[] buffer = new byte[size];
-			is.read(buffer);
-			is.close();
-			mJsonString = new String(buffer, "UTF-8");
-
-			mTestMessages = new JSONArray(mJsonString);
-		} catch (Exception e) {
-			System.err.println("Caught Exception: " + e.getMessage());
-		}
-
-		return mTestMessages;
-	}
+	
 
 	// addJSON will add JSON objects to chatList and handle assignment of
 	// coloring to each new user.
@@ -93,7 +72,7 @@ public class ChatFragment extends Fragment {
 
 			if (tempText.getUserId() == 0) {
 				// System messages are always gray colored.
-				tempText.setColor(0xff000000);
+				tempText.setColor(0x00000000);
 			} else {
 				for (int i = 0; i <= mUserIdList.size(); i++) {
 					if (i == mUserIdList.size()) {

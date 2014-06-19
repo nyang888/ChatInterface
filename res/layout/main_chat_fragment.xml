@@ -10,7 +10,9 @@
         android:id="@+id/chat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#00ffffff" 
-        android:background="#aa3D3D3D"/>
+        android:background="#aa3D3D3D"
+        android:divider="#00ffffff"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll" />
 
 </RelativeLayout>
