@@ -13,14 +13,12 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 public class CustomMainView extends RelativeLayout {
 	private View mListViewFragment;
 	private View mMainActivityView;
 	private Button mSliderButton;
-	private EditText mEditText;
 
 	// Quick Calculation of the ActionBarSize for later calculations.
 	private TypedArray styledAttributes = getContext().getTheme()
@@ -49,7 +47,6 @@ public class CustomMainView extends RelativeLayout {
 		mListViewFragment = (View) findViewById(R.id.fragment_container);
 		mMainActivityView = (View) findViewById(R.id.container);
 		mSliderButton = (Button) findViewById(R.id.slider);
-		mEditText = (EditText) findViewById(R.id.input_message);
 
 		// Update the LayoutParams necessary to for the values to be checked
 		// later.
@@ -64,9 +61,11 @@ public class CustomMainView extends RelativeLayout {
 			if (mSliderButton.getTop() == 0) {
 				params.height = (int) (mMainActivityView.getHeight()
 						- mActionBarSize - mSliderButton.getHeight());
-				params.addRule(RelativeLayout.ABOVE, R.id.input_message);
+				params.addRule(RelativeLayout.ABOVE, R.id.send_message_block);
 				mListViewFragment.setLayoutParams(params);
 			}
+
 		}
+
 	}
 }

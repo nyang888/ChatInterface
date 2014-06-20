@@ -2,33 +2,42 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/testmap">
+    android:layout_gravity="bottom"
+    android:background="@drawable/testmap" >
 
-    <Button
-        android:id="@+id/send_button"
-        android:layout_width="wrap_content"
-        android:layout_height="23dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:background="#ff7d7d7d"
-        android:text="@string/send" />
-
-    <EditText
-        android:id="@+id/input_message"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/send_message_block"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@id/send_button"
-        android:background="#ffffffff"
-        android:hint="@string/message_hint"
-        android:textSize="20sp" />
+        android:layout_alignParentRight="true"
+        android:background="#ffffffff" >
+
+        <Button
+            android:id="@+id/send_button"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:background="#ff7d7d7d"
+            android:text="@string/send" />
+
+        <EditText
+            android:id="@+id/input_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/send_button"
+            android:background="#ffffffff"
+            android:hint="@string/message_hint"
+            android:textSize="20sp" />
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_above="@id/input_message"
+        android:layout_above="@id/send_message_block"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true" >
     </FrameLayout>
@@ -38,7 +47,7 @@
         android:layout_width="fill_parent"
         android:layout_height="25dp"
         android:layout_above="@id/fragment_container"
-        android:background="#FF418BF2"
+        android:background="#bb418BF2"
         android:text="@string/chat_title"
         android:textSize="20sp" />
 

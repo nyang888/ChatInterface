@@ -59,7 +59,7 @@ public class TouchHandler implements OnTouchListener {
 							- mButton.getHeight() - mEditText.getHeight();
 				}
 
-				params.addRule(RelativeLayout.ABOVE, R.id.input_message);
+				params.addRule(RelativeLayout.ABOVE, R.id.send_message_block);
 				mFrameView.setLayoutParams(params);
 			}
 			break;
