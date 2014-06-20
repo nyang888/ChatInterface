@@ -8,6 +8,7 @@
 package com.chatinterface;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
@@ -21,8 +22,17 @@ public class CustomMainView extends RelativeLayout {
 	private Button mSliderButton;
 	private EditText mEditText;
 
+	// Quick Calculation of the ActionBarSize for later calculations.
+	private TypedArray styledAttributes = getContext().getTheme()
+			.obtainStyledAttributes(new int[] { R.attr.actionBarSize });
+	private float mActionBarSize = (int) styledAttributes.getDimension(0, 0);
+
+	// Instantiate the LayoutParams
+	private RelativeLayout.LayoutParams params;
+
 	public CustomMainView(Context context) {
 		super(context);
+
 	}
 
 	public CustomMainView(Context context, AttributeSet attrs) {
@@ -41,18 +51,22 @@ public class CustomMainView extends RelativeLayout {
 		mSliderButton = (Button) findViewById(R.id.slider);
 		mEditText = (EditText) findViewById(R.id.input_message);
 
-		// Instantiate the LayoutParams necessary to update values.
-		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-				mListViewFragment.getLayoutParams());
+		// Update the LayoutParams necessary to for the values to be checked
+		// later.
+		params = (RelativeLayout.LayoutParams) mListViewFragment
+				.getLayoutParams();
 
-		if (mSliderButton.getTop() <= 0) {
+		if (mSliderButton.getBottom() <= 0) {
 			// If the chat is too high, the chat will be forced to be
 			// the max possible size. This is done by constantly redrawing the
 			// image in decrements of 1. Higher decrements has the possibility
 			// that the decrement will be too much after a single draw.
-			params.height = mListViewFragment.getHeight() - 1;
-			params.addRule(RelativeLayout.ABOVE, R.id.input_message);
-			mListViewFragment.setLayoutParams(params);
+			if (mSliderButton.getTop() == 0) {
+				params.height = (int) (mMainActivityView.getHeight()
+						- mActionBarSize - mSliderButton.getHeight());
+				params.addRule(RelativeLayout.ABOVE, R.id.input_message);
+				mListViewFragment.setLayoutParams(params);
+			}
 		}
 	}
 }
