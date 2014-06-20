@@ -24,7 +24,8 @@ public class TouchHandler implements OnTouchListener {
 		// a proper offset.
 		mActionBarHeight = _activity.getActionBarHeight();
 		mSlider = (Button) _activity.findViewById(R.id.slider);
-		mFragmentContainer = (View) _activity.findViewById(R.id.fragment_container);
+		mFragmentContainer = (View) _activity
+				.findViewById(R.id.fragment_container);
 		mMainActivityView = (View) _activity.findViewById(R.id.container);
 		mEditText = (EditText) _activity.findViewById(R.id.input_message);
 	}
@@ -59,6 +60,9 @@ public class TouchHandler implements OnTouchListener {
 							- mSlider.getHeight() - mEditText.getHeight();
 				}
 
+				// Here we must make sure that the chat is always above the
+				// EditText. If the rule is not added, the height actually grows
+				// from the top down.
 				params.addRule(RelativeLayout.ABOVE, R.id.send_message_block);
 				mFragmentContainer.setLayoutParams(params);
 			}

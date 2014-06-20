@@ -89,6 +89,8 @@ public abstract class ChatBlock {
 
 	}
 
+	// This method will read the .json file that will be passed. It will parse
+	// the file and return a JSON Array that will be sent to addJSON.
 	public static JSONArray readJsonFile(Activity _activity, String assetUrl) {
 		JSONArray mTestMessages = new JSONArray();
 		String mJsonString;
