@@ -14,8 +14,8 @@ import android.widget.RelativeLayout;
 
 public class TouchHandler implements OnTouchListener {
 	private float mActionBarHeight;
-	private Button mButton;
-	private View mFrameView;
+	private Button mSlider;
+	private View mFragmentContainer;
 	private View mMainActivityView;
 	private EditText mEditText;
 
@@ -23,8 +23,8 @@ public class TouchHandler implements OnTouchListener {
 		// Here we get the height of the action bar and the button to calculate
 		// a proper offset.
 		mActionBarHeight = _activity.getActionBarHeight();
-		mButton = (Button) _activity.findViewById(R.id.slider);
-		mFrameView = (View) _activity.findViewById(R.id.fragment_container);
+		mSlider = (Button) _activity.findViewById(R.id.slider);
+		mFragmentContainer = (View) _activity.findViewById(R.id.fragment_container);
 		mMainActivityView = (View) _activity.findViewById(R.id.container);
 		mEditText = (EditText) _activity.findViewById(R.id.input_message);
 	}
@@ -46,21 +46,21 @@ public class TouchHandler implements OnTouchListener {
 			// Here we make sure that the ListView is always above the EditText.
 			if ((mMainActivityView.getHeight() - currentY + mActionBarHeight) >= 0) {
 				RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-						mFrameView.getLayoutParams());
+						mFragmentContainer.getLayoutParams());
 				params.height = (int) (mMainActivityView.getHeight() - currentY + mActionBarHeight);
 
 				// Here we make sure that the chat does not go past the
 				// ActionBar.
-				if ((params.height + mButton.getHeight() + mEditText
+				if ((params.height + mSlider.getHeight() + mEditText
 						.getHeight()) > mMainActivityView.getHeight()) {
 					// If the chat is too high, the chat will be forced to be
 					// the max possible size.
 					params.height = mMainActivityView.getHeight()
-							- mButton.getHeight() - mEditText.getHeight();
+							- mSlider.getHeight() - mEditText.getHeight();
 				}
 
 				params.addRule(RelativeLayout.ABOVE, R.id.send_message_block);
-				mFrameView.setLayoutParams(params);
+				mFragmentContainer.setLayoutParams(params);
 			}
 			break;
 		}

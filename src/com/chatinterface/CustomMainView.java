@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 
 public class CustomMainView extends RelativeLayout {
-	private View mListViewFragment;
+	private View mFragmentContainer;
 	private View mMainActivityView;
 	private Button mSliderButton;
 
@@ -44,26 +44,21 @@ public class CustomMainView extends RelativeLayout {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		mListViewFragment = (View) findViewById(R.id.fragment_container);
+		mFragmentContainer = (View) findViewById(R.id.fragment_container);
 		mMainActivityView = (View) findViewById(R.id.container);
 		mSliderButton = (Button) findViewById(R.id.slider);
 
 		// Update the LayoutParams necessary to for the values to be checked
 		// later.
-		params = (RelativeLayout.LayoutParams) mListViewFragment
+		params = (RelativeLayout.LayoutParams) mFragmentContainer
 				.getLayoutParams();
 
-		if (mSliderButton.getBottom() <= 0) {
+		if (mSliderButton.getTop() == 0) {
 			// If the chat is too high, the chat will be forced to be
-			// the max possible size. This is done by constantly redrawing the
-			// image in decrements of 1. Higher decrements has the possibility
-			// that the decrement will be too much after a single draw.
-			if (mSliderButton.getTop() == 0) {
-				params.height = (int) (mMainActivityView.getHeight()
-						- mActionBarSize - mSliderButton.getHeight());
-				params.addRule(RelativeLayout.ABOVE, R.id.send_message_block);
-				mListViewFragment.setLayoutParams(params);
-			}
+			// the max possible size.
+			params.height = (int) (mMainActivityView.getHeight() - mActionBarSize);
+			params.addRule(RelativeLayout.ABOVE, R.id.send_message_block);
+			mFragmentContainer.setLayoutParams(params);
 
 		}
 
