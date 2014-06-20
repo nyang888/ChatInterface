@@ -10,7 +10,6 @@ import java.io.InputStream;
 import java.util.Date;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -80,19 +79,16 @@ public abstract class ChatBlock {
 
 	// Parse the JSON object and extract the ChatID and eDate
 	public void parseJson(JSONObject json) {
-		try {
-			mChatId = json.getInt("eventchatid");
-			mEDate = json.getLong("edatecreated");
-			mUserId = json.getInt("userid");
-			mUsername = json.getString("username");
-			mDate = new Date(mEDate); // Here we translate the eDate into a
-										// regular date.
-		} catch (JSONException e) {
-			System.err.println("Caught JSONException: " + e.getMessage());
-		}
+
+		mChatId = json.optInt("eventchatid");
+		mEDate = json.optLong("edatecreated");
+		mUserId = json.optInt("userid");
+		mUsername = json.optString("username");
+		mDate = new Date(mEDate); // Here we translate the eDate into a
+									// regular date.
 
 	}
-	
+
 	public static JSONArray readJsonFile(Activity _activity, String assetUrl) {
 		JSONArray mTestMessages = new JSONArray();
 		String mJsonString;

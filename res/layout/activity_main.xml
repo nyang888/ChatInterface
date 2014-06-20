@@ -1,11 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.chatinterface.CustomMainView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/testmap"
-    tools:context="com.chatinterface.MainActivity"
-    tools:ignore="MergeRootFrame" >
+    android:background="@drawable/testmap">
 
     <Button
         android:id="@+id/send_button"
@@ -45,4 +42,4 @@
         android:text="@string/chat_title"
         android:textSize="20sp" />
 
-</RelativeLayout>
+</com.chatinterface.CustomMainView>

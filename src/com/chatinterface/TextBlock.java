@@ -5,7 +5,6 @@
  */
 package com.chatinterface;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class TextBlock extends ChatBlock {
@@ -28,12 +27,8 @@ public class TextBlock extends ChatBlock {
 
 	// Here we parse the text section of the JSON.
 	public void parseJson(JSONObject json) {
-		try {
-			super.parseJson(json);
-			mChatMessage = json.getString("chat");
-		} catch (JSONException e) {
-			System.err.println("Caught JSONException: " + e.getMessage());
-		}
+		super.parseJson(json);
+		mChatMessage = json.optString("chat");
 	}
 
 }

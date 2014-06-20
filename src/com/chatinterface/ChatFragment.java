@@ -44,7 +44,8 @@ public class ChatFragment extends Fragment {
 		try {
 			// Read the sample JSON file and place the information into chatList
 			// as chatBlocks.
-			JSONArray mTest = ChatBlock.readJsonFile(getActivity(), "examplechat.json");
+			JSONArray mTest = ChatBlock.readJsonFile(getActivity(),
+					"examplechat.json");
 
 			for (int index = 0; index < mTest.length(); index++) {
 				addJson(mTest.getJSONObject(index));
@@ -58,8 +59,6 @@ public class ChatFragment extends Fragment {
 		ListView mListView = (ListView) getActivity().findViewById(R.id.chat);
 		mListView.setAdapter(mAdapter);
 	}
-
-	
 
 	// addJSON will add JSON objects to chatList and handle assignment of
 	// coloring to each new user.
@@ -83,7 +82,8 @@ public class ChatFragment extends Fragment {
 						tempText.setColor(mColorList[i % 5]);
 
 						break;
-					} else if (mUserIdList.get(i).intValue() == tempText.getUserId()) {
+					} else if (mUserIdList.get(i).intValue() == tempText
+							.getUserId()) {
 						// If the user is already assigned a color, just add
 						// the new chatBlock with the color assigned.
 
