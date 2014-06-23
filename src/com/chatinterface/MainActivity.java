@@ -30,11 +30,13 @@ public class MainActivity extends ActionBarActivity {
 		TouchHandler touch = new TouchHandler(this);
 		chatSlider.setOnTouchListener(touch);
 
-		// Remove the zoom in/out buttons from the map in the background.
-		GoogleMap map = ((SupportMapFragment) getSupportFragmentManager()
+		// Configure the google map: No Zoom in/out, add current location
+		// button, set map to hybrid satellite map.
+		GoogleMap mGoogleMap = ((SupportMapFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.map)).getMap();
-		map.getUiSettings().setZoomControlsEnabled(false);
-		map.setMyLocationEnabled(true);
+		mGoogleMap.getUiSettings().setZoomControlsEnabled(false);
+		mGoogleMap.setMyLocationEnabled(true);
+		mGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
 	}
 

@@ -7,9 +7,6 @@
  */
 package com.chatinterface;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
