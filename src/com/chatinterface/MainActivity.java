@@ -8,6 +8,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.TypedValue;
 import android.widget.Button;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+
 public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,12 @@ public class MainActivity extends ActionBarActivity {
 		Button chatSlider = (Button) findViewById(R.id.slider);
 		TouchHandler touch = new TouchHandler(this);
 		chatSlider.setOnTouchListener(touch);
+
+		// Remove the zoom in/out buttons from the map in the background.
+		GoogleMap map = ((SupportMapFragment) getSupportFragmentManager()
+				.findFragmentById(R.id.map)).getMap();
+		map.getUiSettings().setZoomControlsEnabled(false);
+		map.setMyLocationEnabled(true);
 
 	}
 
