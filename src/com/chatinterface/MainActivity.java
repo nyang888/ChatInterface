@@ -8,8 +8,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.TypedValue;
 import android.widget.Button;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends ActionBarActivity {
 	@Override
@@ -32,12 +36,31 @@ public class MainActivity extends ActionBarActivity {
 
 		// Configure the google map: No Zoom in/out, add current location
 		// button, set map to hybrid satellite map.
-		GoogleMap mGoogleMap = ((SupportMapFragment) getSupportFragmentManager()
+		final GoogleMap mGoogleMap = ((SupportMapFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.map)).getMap();
 		mGoogleMap.getUiSettings().setZoomControlsEnabled(false);
 		mGoogleMap.setMyLocationEnabled(true);
 		mGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
+		// Setting a click event handler for the map
+		mGoogleMap.setOnMapClickListener(new OnMapClickListener() {
+
+			@Override
+			public void onMapClick(LatLng latLng) {
+
+				// Creating a marker
+				MarkerOptions markerOptions = new MarkerOptions();
+
+				// Setting the position for the marker
+				markerOptions.position(latLng);
+
+				// Animating to the touched position
+				mGoogleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
+				// Placing a marker on the touched position
+				mGoogleMap.addMarker(markerOptions);
+			}
+		});
 	}
 
 	public float getActionBarHeight() { // Return the height of the action bar
