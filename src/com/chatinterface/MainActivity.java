@@ -3,6 +3,9 @@
  */
 package com.chatinterface;
 
+import java.util.ArrayList;
+
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.TypedValue;
@@ -16,10 +19,16 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends ActionBarActivity {
+	private GoogleMap mGoogleMap;
+	private ArrayList<LatLng> mLatLngList = new ArrayList<LatLng>();
+	private Route mRoute = new Route();
+	private Context mContext;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		mContext = this;
 
 		// Create a new Fragment to be placed in the activity layout
 		ChatFragment mChatFragment = new ChatFragment();
@@ -36,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
 
 		// Configure the google map: No Zoom in/out, add current location
 		// button, set map to hybrid satellite map.
-		final GoogleMap mGoogleMap = ((SupportMapFragment) getSupportFragmentManager()
+		mGoogleMap = ((SupportMapFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.map)).getMap();
 		mGoogleMap.getUiSettings().setZoomControlsEnabled(false);
 		mGoogleMap.setMyLocationEnabled(true);
@@ -59,6 +68,20 @@ public class MainActivity extends ActionBarActivity {
 
 				// Placing a marker on the touched position
 				mGoogleMap.addMarker(markerOptions);
+
+				// Here we add the latLng to the ArrayList. This will be used
+				// for the drawPath function. Each path will stem from one of
+				// the markers as if it were a wayPoint.
+				mLatLngList.add(latLng);
+
+				if (mLatLngList.size() > 1) {
+					// As long as there are 2 or more markers down, a path will
+					// be drawn
+					for (int i = 1; i < mLatLngList.size(); i++) {
+						mRoute.drawRoute(mGoogleMap, mContext,
+								mLatLngList.get(i - 1), mLatLngList.get(i));
+					}
+				}
 			}
 		});
 	}
