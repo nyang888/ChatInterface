@@ -11,6 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <FrameLayout
+        android:id="@+id/address_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+    </FrameLayout>
+
     <RelativeLayout
         android:id="@+id/send_message_block"
         android:layout_width="fill_parent"

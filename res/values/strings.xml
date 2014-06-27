@@ -8,5 +8,9 @@
     <string name="prof_pic_desc">Profile Picture</string>
     <string name="send">Send</string>
     <string name="message_hint">Enter Text Here</string>
+    <string name="source_title">Source Address</string>
+    <string name="street_hint">Enter Street Address Here</string>
+    <string name="state_hint">Enter City, State, and ZIP Here</string>
+    <string name="dest_title">Destination Address</string>
 
 </resources>
