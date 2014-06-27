@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/input_address_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/input_address_fragment" >
+    android:background="#bb3D3D3D"
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/source_title"
@@ -11,46 +12,57 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/source_title" />
-    <EditText 
+        android:text="@string/source_title"
+        android:textColor="#ffffffff" />
+
+    <EditText
         android:id="@+id/source_street"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/source_title"
-        android:hint="@string/street_hint"/>
-    <EditText 
+        android:hint="@string/street_hint"
+        android:textColor="#ffffffff" />
+
+    <EditText
         android:id="@+id/source_state"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/source_street"
-        android:hint="@string/state_hint"/>
-    
+        android:hint="@string/state_hint"
+        android:textColor="#ffffffff" />
+
     <TextView
         android:id="@+id/dest_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/source_state"
-        android:text="@string/dest_title" />
-    <EditText 
+        android:text="@string/dest_title"
+        android:textColor="#ffffffff" />
+
+    <EditText
         android:id="@+id/dest_street"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/dest_title"
-        android:hint="@string/street_hint"/>
-    <EditText 
+        android:hint="@string/street_hint"
+        android:textColor="#ffffffff" />
+
+    <EditText
         android:id="@+id/dest_state"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/dest_street"
-        android:hint="@string/state_hint"/>
-    
-    <Button 
+        android:hint="@string/state_hint"
+        android:textColor="#ffffffff" />
+
+    <Button
         android:id="@+id/send_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dest_state"
         android:layout_alignParentRight="true"
-        android:text="@string/send"/>
+        android:layout_below="@id/dest_state"
+        android:background="#ff7d7d7d"
+        android:text="@string/send" />
 
 </RelativeLayout>

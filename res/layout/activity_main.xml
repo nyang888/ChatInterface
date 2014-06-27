@@ -18,6 +18,14 @@
         android:layout_alignParentTop="true" >
     </FrameLayout>
 
+    <Button
+        android:id="@+id/address_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/address_container"
+        android:text="@string/address_button" />
+
     <RelativeLayout
         android:id="@+id/send_message_block"
         android:layout_width="fill_parent"

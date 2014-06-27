@@ -12,5 +12,6 @@
     <string name="street_hint">Enter Street Address Here</string>
     <string name="state_hint">Enter City, State, and ZIP Here</string>
     <string name="dest_title">Destination Address</string>
+    <string name="address_button">Address Input</string>
 
 </resources>

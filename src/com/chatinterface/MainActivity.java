@@ -5,6 +5,7 @@ package com.chatinterface;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -23,12 +24,23 @@ public class MainActivity extends ActionBarActivity {
 	private ArrayList<LatLng> mLatLngList = new ArrayList<LatLng>();
 	private Route mRoute = new Route();
 	private Context mContext;
+	private Activity mActivity;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		mContext = this;
+		mActivity = this;
+
+		// Here we create a new AddressInputFragment which should handle
+		// all the stuff for the Address Inputs
+		AddressInputFragment mAddressInputFragment = new AddressInputFragment();
+		mAddressInputFragment.setArguments(getIntent().getExtras());
+		mAddressInputFragment
+				.setValues(mActivity, mGoogleMap, mRoute, mContext);
+		getSupportFragmentManager().beginTransaction()
+				.add(R.id.address_container, mAddressInputFragment).commit();
 
 		// Create a new Fragment to be placed in the activity layout
 		ChatFragment mChatFragment = new ChatFragment();

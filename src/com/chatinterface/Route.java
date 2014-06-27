@@ -33,11 +33,23 @@ public class Route {
 
 	}
 
+	public void drawRoute(GoogleMap map, Context c, String source, String dest) {
+		// This is the drawRoute implementation for two address strings.
+		mMap = map;
+		mContext = c;
+
+		String url = makeURL(source, dest);
+
+		new DrawTask(url).execute();
+
+	}
+
 	private String makeURL(double sourcelat, double sourcelog, double destlat,
 			double destlog) {
 		// Here we use a StringBuilder to create a URL to access directions. The
 		// parameters are then appended to the StringBuilder to finish the URL.
 		StringBuilder mUrlString = new StringBuilder();
+		String toString="";
 
 		mUrlString
 				.append("http://maps.googleapis.com/maps/api/directions/json");
@@ -50,7 +62,27 @@ public class Route {
 		mUrlString.append(",");
 		mUrlString.append(Double.toString(destlog));
 		mUrlString.append("&sensor=false&mode=walking");
-		return mUrlString.toString();
+		toString=mUrlString.toString();
+		toString=toString.replaceAll("\\s", "+");
+		return toString;
+	}
+
+	private String makeURL(String source, String dest) {
+		// This is the makeURL implementation with addresses.
+		StringBuilder mUrlString = new StringBuilder();
+		String toString="";
+
+		mUrlString
+				.append("http://maps.googleapis.com/maps/api/directions/json");
+		mUrlString.append("?origin=");// from
+		mUrlString.append(source);
+		mUrlString.append("&destination=");// to
+		mUrlString.append(dest);
+		mUrlString.append("&sensor=false&mode=walking");
+		System.out.println(mUrlString.toString());
+		toString=mUrlString.toString();
+		toString=toString.replaceAll("\\s", "+");
+		return toString;
 	}
 
 	private List<LatLng> decodePoly(String encoded) {
