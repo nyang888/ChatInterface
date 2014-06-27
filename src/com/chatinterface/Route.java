@@ -18,13 +18,13 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 public class Route {
-	private GoogleMap mMap;
+	private GoogleMap mGoogleMap;
 	private Context mContext;
 
 	// Here we implement the drawing of the path. It will actually call the
 	// private class DrawTask to connect to the server and get the directions.
 	public void drawRoute(GoogleMap map, Context c, LatLng source, LatLng dest) {
-		mMap = map;
+		mGoogleMap = map;
 		mContext = c;
 		String url = makeURL(source.latitude, source.longitude, dest.latitude,
 				dest.longitude);
@@ -35,7 +35,7 @@ public class Route {
 
 	public void drawRoute(GoogleMap map, Context c, String source, String dest) {
 		// This is the drawRoute implementation for two address strings.
-		mMap = map;
+		mGoogleMap = map;
 		mContext = c;
 
 		String url = makeURL(source, dest);
@@ -49,7 +49,7 @@ public class Route {
 		// Here we use a StringBuilder to create a URL to access directions. The
 		// parameters are then appended to the StringBuilder to finish the URL.
 		StringBuilder mUrlString = new StringBuilder();
-		String toString="";
+		String toString = "";
 
 		mUrlString
 				.append("http://maps.googleapis.com/maps/api/directions/json");
@@ -62,15 +62,15 @@ public class Route {
 		mUrlString.append(",");
 		mUrlString.append(Double.toString(destlog));
 		mUrlString.append("&sensor=false&mode=walking");
-		toString=mUrlString.toString();
-		toString=toString.replaceAll("\\s", "+");
+		toString = mUrlString.toString();
+		toString = toString.replaceAll("\\s", "+");
 		return toString;
 	}
 
 	private String makeURL(String source, String dest) {
 		// This is the makeURL implementation with addresses.
 		StringBuilder mUrlString = new StringBuilder();
-		String toString="";
+		String toString = "";
 
 		mUrlString
 				.append("http://maps.googleapis.com/maps/api/directions/json");
@@ -80,8 +80,8 @@ public class Route {
 		mUrlString.append(dest);
 		mUrlString.append("&sensor=false&mode=walking");
 		System.out.println(mUrlString.toString());
-		toString=mUrlString.toString();
-		toString=toString.replaceAll("\\s", "+");
+		toString = mUrlString.toString();
+		toString = toString.replaceAll("\\s", "+");
 		return toString;
 	}
 
@@ -177,7 +177,7 @@ public class Route {
 				// information into a PolyLine
 				LatLng src = list.get(z);
 				LatLng dest = list.get(z + 1);
-				Polyline line = mMap.addPolyline(new PolylineOptions()
+				Polyline line = mGoogleMap.addPolyline(new PolylineOptions()
 						.add(new LatLng(src.latitude, src.longitude),
 								new LatLng(dest.latitude, dest.longitude))
 						.width(30).color(Color.BLUE).geodesic(true));

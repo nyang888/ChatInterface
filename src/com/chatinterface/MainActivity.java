@@ -33,15 +33,6 @@ public class MainActivity extends ActionBarActivity {
 		mContext = this;
 		mActivity = this;
 
-		// Here we create a new AddressInputFragment which should handle
-		// all the stuff for the Address Inputs
-		AddressInputFragment mAddressInputFragment = new AddressInputFragment();
-		mAddressInputFragment.setArguments(getIntent().getExtras());
-		mAddressInputFragment
-				.setValues(mActivity, mGoogleMap, mRoute, mContext);
-		getSupportFragmentManager().beginTransaction()
-				.add(R.id.address_container, mAddressInputFragment).commit();
-
 		// Create a new Fragment to be placed in the activity layout
 		ChatFragment mChatFragment = new ChatFragment();
 		mChatFragment.setArguments(getIntent().getExtras());
@@ -62,6 +53,15 @@ public class MainActivity extends ActionBarActivity {
 		mGoogleMap.getUiSettings().setZoomControlsEnabled(false);
 		mGoogleMap.setMyLocationEnabled(true);
 		mGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+		// Here we create a new AddressInputFragment which should handle
+		// all the stuff for the Address Inputs
+		AddressInputFragment mAddressInputFragment = new AddressInputFragment();
+		mAddressInputFragment.setArguments(getIntent().getExtras());
+		mAddressInputFragment
+				.setValues(mActivity, mGoogleMap, mRoute, mContext);
+		getSupportFragmentManager().beginTransaction()
+				.add(R.id.address_container, mAddressInputFragment).commit();
 
 		// Setting a click event handler for the map
 		mGoogleMap.setOnMapClickListener(new OnMapClickListener() {
