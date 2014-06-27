@@ -72,6 +72,7 @@ public class AddressInputFragment extends Fragment {
 			public void onClick(View v) {
 				StringBuilder source = new StringBuilder();
 				StringBuilder dest = new StringBuilder();
+				mGoogleMap.clear();
 
 				source.append(sourceStreet.getText().toString());
 				source.append(sourceState.getText().toString());

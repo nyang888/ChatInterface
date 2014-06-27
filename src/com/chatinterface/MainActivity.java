@@ -86,13 +86,13 @@ public class MainActivity extends ActionBarActivity {
 				// the markers as if it were a wayPoint.
 				mLatLngList.add(latLng);
 
-				if (mLatLngList.size() > 1) {
+				if (mLatLngList.size() > 1 && mLatLngList.size() % 2 == 0) {
 					// As long as there are 2 or more markers down, a path will
 					// be drawn
-					for (int i = 1; i < mLatLngList.size(); i++) {
-						mRoute.drawRoute(mGoogleMap, mContext,
-								mLatLngList.get(i - 1), mLatLngList.get(i));
-					}
+					mGoogleMap.clear();
+					mRoute.drawRoute(mGoogleMap, mContext,
+							mLatLngList.get(mLatLngList.size() - 1),
+							mLatLngList.get(mLatLngList.size() - 2));
 				}
 			}
 		});
