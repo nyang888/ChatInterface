@@ -1475,7 +1475,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f070028;
         public static final int action_menu_presenter=0x7f070029;
         public static final int action_mode_close_button=0x7f070036;
-        public static final int action_settings=0x7f070066;
+        public static final int action_settings=0x7f070064;
         public static final int activity_chooser_view_content=0x7f070037;
         public static final int address_container=0x7f070050;
         public static final int address_show=0x7f070051;
@@ -1485,8 +1485,8 @@ containing a value of this type.
         public static final int buyButton=0x7f07000a;
         public static final int buy_now=0x7f07000f;
         public static final int buy_with_google=0x7f07000e;
-        public static final int chat=0x7f070065;
-        public static final int chat_frag=0x7f070064;
+        public static final int chat=0x7f070063;
+        public static final int chat_frag=0x7f070062;
         public static final int chat_layout=0x7f070057;
         public static final int chat_message=0x7f07005b;
         public static final int checkbox=0x7f07003f;
@@ -1494,9 +1494,8 @@ containing a value of this type.
         public static final int collapseActionView=0x7f070020;
         public static final int container=0x7f07004e;
         public static final int default_activity_button=0x7f07003a;
-        public static final int dest_state=0x7f070062;
-        public static final int dest_street=0x7f070061;
-        public static final int dest_title=0x7f070060;
+        public static final int dest_address=0x7f070060;
+        public static final int dest_title=0x7f07005f;
         public static final int dialog=0x7f070021;
         public static final int disableHome=0x7f07001b;
         public static final int dropdown=0x7f070022;
@@ -1544,7 +1543,7 @@ containing a value of this type.
         public static final int search_src_text=0x7f070049;
         public static final int search_voice_btn=0x7f07004d;
         public static final int selectionDetails=0x7f07000b;
-        public static final int send_address=0x7f070063;
+        public static final int send_address=0x7f070061;
         public static final int send_button=0x7f070053;
         public static final int send_message_block=0x7f070052;
         public static final int shortcut=0x7f070040;
@@ -1552,8 +1551,7 @@ containing a value of this type.
         public static final int showHome=0x7f070017;
         public static final int showTitle=0x7f070019;
         public static final int slider=0x7f070056;
-        public static final int source_state=0x7f07005f;
-        public static final int source_street=0x7f07005e;
+        public static final int source_address=0x7f07005e;
         public static final int source_title=0x7f07005d;
         public static final int split_action_bar=0x7f070030;
         public static final int strict_sandbox=0x7f070009;

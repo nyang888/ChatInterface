@@ -21,10 +21,8 @@ public class AddressInputFragment extends Fragment {
 	private Context mContext;
 	private TextView sourceTitle;
 	private TextView destTitle;
-	private EditText sourceStreet;
-	private EditText sourceState;
-	private EditText destStreet;
-	private EditText destState;
+	private EditText sourceAddress;
+	private EditText destAddress;
 	private Button mInputAddressButton;
 	private Button mDropDownButton;
 
@@ -55,10 +53,8 @@ public class AddressInputFragment extends Fragment {
 		// manipulate them later.
 		sourceTitle = (TextView) mActivity.findViewById(R.id.source_title);
 		destTitle = (TextView) mActivity.findViewById(R.id.dest_title);
-		sourceStreet = (EditText) mActivity.findViewById(R.id.source_street);
-		sourceState = (EditText) mActivity.findViewById(R.id.source_state);
-		destStreet = (EditText) mActivity.findViewById(R.id.dest_street);
-		destState = (EditText) mActivity.findViewById(R.id.dest_state);
+		sourceAddress = (EditText) mActivity.findViewById(R.id.source_address);
+		destAddress = (EditText) mActivity.findViewById(R.id.dest_address);
 		mInputAddressButton = (Button) mActivity
 				.findViewById(R.id.send_address);
 		mDropDownButton = (Button) mActivity.findViewById(R.id.address_show);
@@ -70,16 +66,10 @@ public class AddressInputFragment extends Fragment {
 			// request.
 			@Override
 			public void onClick(View v) {
-				StringBuilder source = new StringBuilder();
-				StringBuilder dest = new StringBuilder();
-				mGoogleMap.clear();
+				mGoogleMap.clear(); // Clear the previous routes
 
-				source.append(sourceStreet.getText().toString());
-				source.append(sourceState.getText().toString());
-				dest.append(destStreet.getText().toString());
-				dest.append(destState.getText().toString());
-				mRoute.drawRoute(mGoogleMap, mContext, source.toString(),
-						dest.toString());
+				mRoute.drawRoute(mGoogleMap, mContext, sourceAddress.getText()
+						.toString(), destAddress.getText().toString());
 
 				// We close the Text Input area after getting the path.
 				closeAddressInput();
@@ -103,10 +93,8 @@ public class AddressInputFragment extends Fragment {
 		// in INVISIBLE
 		sourceTitle.setVisibility(View.GONE);
 		destTitle.setVisibility(View.GONE);
-		sourceStreet.setVisibility(View.GONE);
-		sourceState.setVisibility(View.GONE);
-		destStreet.setVisibility(View.GONE);
-		destState.setVisibility(View.GONE);
+		sourceAddress.setVisibility(View.GONE);
+		destAddress.setVisibility(View.GONE);
 		mInputAddressButton.setVisibility(View.GONE);
 	}
 
@@ -114,10 +102,8 @@ public class AddressInputFragment extends Fragment {
 		// Here we open it up by making all the elements visible.
 		sourceTitle.setVisibility(View.VISIBLE);
 		destTitle.setVisibility(View.VISIBLE);
-		sourceStreet.setVisibility(View.VISIBLE);
-		sourceState.setVisibility(View.VISIBLE);
-		destStreet.setVisibility(View.VISIBLE);
-		destState.setVisibility(View.VISIBLE);
+		sourceAddress.setVisibility(View.VISIBLE);
+		destAddress.setVisibility(View.VISIBLE);
 		mInputAddressButton.setVisibility(View.VISIBLE);
 	}
 }

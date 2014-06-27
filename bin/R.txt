@@ -339,7 +339,7 @@ int id action_context_bar 0x7f07002f
 int id action_menu_divider 0x7f070028
 int id action_menu_presenter 0x7f070029
 int id action_mode_close_button 0x7f070036
-int id action_settings 0x7f070066
+int id action_settings 0x7f070064
 int id activity_chooser_view_content 0x7f070037
 int id address_container 0x7f070050
 int id address_show 0x7f070051
@@ -349,8 +349,8 @@ int id book_now 0x7f070010
 int id buyButton 0x7f07000a
 int id buy_now 0x7f07000f
 int id buy_with_google 0x7f07000e
-int id chat 0x7f070065
-int id chat_frag 0x7f070064
+int id chat 0x7f070063
+int id chat_frag 0x7f070062
 int id chat_layout 0x7f070057
 int id chat_message 0x7f07005b
 int id checkbox 0x7f07003f
@@ -358,9 +358,8 @@ int id classic 0x7f070011
 int id collapseActionView 0x7f070020
 int id container 0x7f07004e
 int id default_activity_button 0x7f07003a
-int id dest_state 0x7f070062
-int id dest_street 0x7f070061
-int id dest_title 0x7f070060
+int id dest_address 0x7f070060
+int id dest_title 0x7f07005f
 int id dialog 0x7f070021
 int id disableHome 0x7f07001b
 int id dropdown 0x7f070022
@@ -408,7 +407,7 @@ int id search_plate 0x7f070048
 int id search_src_text 0x7f070049
 int id search_voice_btn 0x7f07004d
 int id selectionDetails 0x7f07000b
-int id send_address 0x7f070063
+int id send_address 0x7f070061
 int id send_button 0x7f070053
 int id send_message_block 0x7f070052
 int id shortcut 0x7f070040
@@ -416,8 +415,7 @@ int id showCustom 0x7f07001a
 int id showHome 0x7f070017
 int id showTitle 0x7f070019
 int id slider 0x7f070056
-int id source_state 0x7f07005f
-int id source_street 0x7f07005e
+int id source_address 0x7f07005e
 int id source_title 0x7f07005d
 int id split_action_bar 0x7f070030
 int id strict_sandbox 0x7f070009

@@ -16,19 +16,11 @@
         android:textColor="#ffffffff" />
 
     <EditText
-        android:id="@+id/source_street"
+        android:id="@+id/source_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/source_title"
         android:hint="@string/street_hint"
-        android:textColor="#ffffffff" />
-
-    <EditText
-        android:id="@+id/source_state"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/source_street"
-        android:hint="@string/state_hint"
         android:textColor="#ffffffff" />
 
     <TextView
@@ -36,24 +28,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/source_state"
+        android:layout_below="@id/source_address"
         android:text="@string/dest_title"
         android:textColor="#ffffffff" />
 
     <EditText
-        android:id="@+id/dest_street"
+        android:id="@+id/dest_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/dest_title"
         android:hint="@string/street_hint"
-        android:textColor="#ffffffff" />
-
-    <EditText
-        android:id="@+id/dest_state"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/dest_street"
-        android:hint="@string/state_hint"
         android:textColor="#ffffffff" />
 
     <Button
@@ -61,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/dest_state"
+        android:layout_below="@id/dest_address"
         android:background="#ff7d7d7d"
         android:text="@string/send" />
 
